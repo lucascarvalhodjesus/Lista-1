@@ -1,159 +1,193 @@
 # ED2 — Sorting — Lista 01
 
-Exercícios de fixação de **Estrutura de Dados II** — Algoritmos de ordenação (Bubble Sort, Selection Sort, Insertion Sort) e suas variações.
+Este repositório corresponde à **primeira etapa da atividade prática da disciplina de Estrutura de Dados II**, contendo o código-fonte dos exercícios propostos sobre algoritmos de ordenação.
 
-> Instituto Federal do Triângulo Mineiro — Campus Patrocínio
-> Curso: Tecnologia em Análise e Desenvolvimento de Sistemas — 4º Período
-> Professor: Júnio Moreira
-> Data: 12/08/2026 · **Entrega: 26/08/2026**
+O projeto foi desenvolvido em **C++** e utiliza **CMake** para organização, compilação e execução dos arquivos.
 
----
+## Objetivos
 
-## 📁 Estrutura do Projeto
+A atividade tem como objetivo praticar a implementação e o funcionamento de algoritmos clássicos de ordenação, incluindo:
 
-```
-ed2-sorting-list01-cpp/
+* Bubble Sort
+* Selection Sort
+* Insertion Sort
+* Ordenação crescente e decrescente
+* Controle de trocas
+* Contagem de deslocamentos
+* Manipulação de strings e vetores
+
+## Tecnologias utilizadas
+
+* C++
+* CMake
+* CLion
+* Git
+* GitHub
+
+## Estrutura do projeto
+
+```text
+ed2-elementary-sorting-list01-cpp/
 ├── CMakeLists.txt
 ├── README.md
+├── main.cpp
 └── src/
     ├── Exer01_BubbleSortString.cpp
-    ├── Exer02_SelectionSortDesc.cpp
+    ├── Exer02_SelectionSortDescending.cpp
     ├── Exer03_SelectionSortKSwaps.cpp
-    ├── Exer04_InsertionSortCountShifts.cpp
-    └── Exer05_InsertionSortDescFromEnd.cpp
+    ├── Exer04_InsertionSortShiftCount.cpp
+    └── Exer05_InsertionSortDescendingTail.cpp
 ```
 
-Cada arquivo `.cpp` é **autônomo** (tem sua própria `main()`) e é compilado como um executável independente. Todos seguem o mesmo padrão de três blocos:
+Cada exercício está localizado em seu próprio arquivo `.cpp` e possui um executável independente configurado no `CMakeLists.txt`.
 
-| Bloco | Responsabilidade |
-|---|---|
-| **Lógica pura** | Implementa o algoritmo em si, usando STL (`vector`, `string`, etc). Não faz `cin`/`cout`. |
-| `onlineJudge()` | Adaptador: lê a entrada com `cin`, chama a lógica pura, imprime com `cout`. |
-| `runExer...()` | Roda os exemplos do enunciado localmente e compara com o gabarito (`[PASSOU]` / `[FALHOU]`). |
+## Exercícios
 
----
+### Exercício 01 — Bubble Sort em String
 
-## 📝 Exercícios
+Implementação do algoritmo **Bubble Sort** para ordenar os caracteres de uma string em ordem crescente.
 
-| # | Arquivo | Problema | Técnica | Complexidade |
-|---|---|---|---|---|
-| 1 | `Exer01_BubbleSortString.cpp` | Ordenar caracteres de uma string alfabeticamente | Bubble Sort | O(n²) |
-| 2 | `Exer02_SelectionSortDesc.cpp` | Ordenar vetor em ordem decrescente | Selection Sort (variação) | O(n²) |
-| 3 | `Exer03_SelectionSortKSwaps.cpp` | Estado do vetor após k trocas do Selection Sort | Selection Sort (simulação parcial) | O(k·n) |
-| 4 | `Exer04_InsertionSortCountShifts.cpp` | Ordenar e contar deslocamentos no `while` | Insertion Sort (instrumentado) | O(n²) |
-| 5 | `Exer05_InsertionSortDescFromEnd.cpp` | Ordenar decrescente construindo do fim para o início | Insertion Sort (variação) | O(n²) |
+Exemplo:
 
-<details>
-<summary><strong>Detalhes de cada exercício (entrada, saída e exemplo)</strong></summary>
+```text
+Entrada:
+patrocinio
 
-### 1. Ordenação de Caracteres em String com Bubble Sort
-**Entrada:** string `S` de tamanho N, composta por letras minúsculas.
-**Saída:** a string com os caracteres ordenados alfabeticamente. **Deve usar estritamente Bubble Sort.**
-
-```
-Entrada          Saída
-estrutura        aeerrsttu
+Saída:
+aciinooprt
 ```
 
-### 2. Ordenação Decrescente de Vetor com Selection Sort
-**Entrada:** N e o vetor `V`.
-**Saída:** o vetor ordenado em ordem **decrescente**, usando a lógica do Selection Sort (selecionar o maior da sublista não ordenada a cada passo).
+### Exercício 02 — Selection Sort Decrescente
 
-```
-Entrada          Saída
-5                5 4 3 2 1
-3 1 4 5 2
-```
+Implementação do algoritmo **Selection Sort** para ordenar os elementos em ordem decrescente.
 
-### 3. Simulação Parcial do Selection Sort com k Trocas
-**Entrada:** N, k e o vetor `A`.
-**Saída:** o estado do vetor imediatamente após executar as **primeiras k trocas** do Selection Sort padrão (crescente).
+### Exercício 03 — Selection Sort com K trocas
 
-```
-Entrada          Saída
-5 2              13 14 29 37 64
-29 64 14 37 13
-```
+Variação do **Selection Sort** na qual a quantidade de trocas realizadas durante o processo de ordenação é limitada.
 
-### 4. Contagem de Deslocamentos no Insertion Sort
-**Entrada:** N (fixo em 10) e o vetor de 10 elementos.
-**Saída:** primeira linha com o vetor ordenado crescente; segunda linha com o **total de cópias/deslocamentos** realizados dentro do `while` (`array[j+1] = array[j]`).
+### Exercício 04 — Insertion Sort com contagem de deslocamentos
 
-```
-Entrada                              Saída
-10                                    12 27 33 41 56 62 67 69 72 74
-72 12 62 69 27 67 41 56 33 74         26
-```
+Implementação do **Insertion Sort** com contagem da quantidade de deslocamentos realizados durante a ordenação.
 
-### 5. Insertion Sort com Sublista Ordenada no Final
-**Entrada:** N e o vetor.
-**Saída:** o vetor ordenado em ordem **decrescente**, construindo a sublista ordenada a partir do **final** do vetor em direção ao início (percorrendo da direita para a esquerda).
+### Exercício 05 — Insertion Sort Decrescente
 
-```
-Entrada          Saída
-6                12 9 7 5 3 1
-12 7 9 1 5 3
-```
+Implementação de uma variação do **Insertion Sort** para ordenação dos elementos em ordem decrescente.
 
-</details>
+## Requisitos
 
----
+Para compilar e executar o projeto é necessário possuir:
 
-## 🚀 Como Executar no CLion
+* Compilador C++
+* CMake compatível com a versão definida no `CMakeLists.txt`
+* CLion ou outra IDE compatível com projetos CMake
 
-1. Abra o projeto e recarregue o CMake (**Reload CMake Project**, ícone de sincronizar que aparece ao editar o `CMakeLists.txt`).
-2. No seletor de alvos de execução (topo da janela), escolha o exercício desejado.
-3. Clique em **Run** (▶) ou **Debug** (🐞).
+## Compilação pelo terminal
 
-> **Dica:** cada arquivo alterna entre dois modos dentro do `int main()`:
-> - **Modo teste local** (padrão): roda `runExer...()` com os exemplos do enunciado.
-> - **Modo juiz online**: comente a chamada de `runExer...()` e descomente `onlineJudge()` antes de submeter no juiz.
-
-```cpp
-int main() {
-    runExer01BubbleSortString();  // <- modo teste local (ativo)
-    // onlineJudge();             // <- modo juiz online (comentado)
-    return 0;
-}
-```
-
----
-
-## 💻 Como Executar pelo Terminal (sem CLion)
-
-Caso prefira compilar manualmente com `g++`:
+Dentro da pasta raiz do projeto, execute:
 
 ```bash
-g++ -std=c++17 -Wall -Wextra -o exer01 src/Exer01_BubbleSortString.cpp
-./exer01
+cmake -S . -B build
 ```
 
-Para testar o modo juiz online via terminal, redirecione um arquivo de entrada:
+Esse comando cria a pasta de compilação e gera os arquivos necessários.
+
+Depois execute:
 
 ```bash
-echo "estrutura" | ./exer01
+cmake --build build
 ```
 
----
+O CMake irá compilar todos os executáveis definidos no projeto.
 
-## ⚠️ Atenção ao enunciado
+## Execução pelo CLion
 
-- **Questão 1** exige explicitamente o uso do **Bubble Sort** — não use `std::sort` ou outro algoritmo, mesmo que dê o resultado certo.
-- **Questão 2** é uma *variação* do Selection Sort (busca o **maior**, não o menor) — implemente a lógica manualmente, não use `sort` com comparador decrescente.
-- **Questão 3** pede o estado **intermediário** do vetor, não o vetor totalmente ordenado — cuidado para não rodar o algoritmo completo.
-- **Questão 4** exige contar deslocamentos **apenas** dentro do `while` interno do Insertion Sort — não contar comparações nem outras atribuições.
-- **Questão 5** constrói a sublista ordenada a partir do **fim** do vetor — a lógica de inserção é espelhada em relação ao Insertion Sort tradicional.
+1. Abra o CLion.
+2. Selecione **File → Open**.
+3. Abra a pasta raiz deste projeto.
+4. Aguarde o carregamento do `CMakeLists.txt`.
+5. No topo da IDE, selecione o exercício que deseja executar.
 
----
+Exemplo:
 
-## ✅ Pré-requisitos
+```text
+Exer01_BubbleSortString
+```
 
-- Compilador C++17 ou superior (GCC, Clang ou MSVC)
-- CMake ≥ 3.20
-- CLion (recomendado) ou qualquer IDE/editor de sua preferência
+6. Clique no botão **Run**.
 
----
+Também é possível executar utilizando o atalho:
 
-## 📚 Referência
+```text
+Shift + F10
+```
 
-Lista de exercícios original: *Exercícios de Fixação — Estrutura de Dados II* (12/08/2026 · entrega 26/08/2026).
+Para executar outro exercício, selecione o executável correspondente no topo do CLion.
+
+## Testes
+
+Cada exercício possui casos de teste responsáveis por comparar o resultado produzido pelo algoritmo com o resultado esperado.
+
+Para executar os testes:
+
+1. Abra o arquivo do exercício desejado.
+2. Selecione o executável correspondente no CLion.
+3. Clique em **Run** ou pressione `Shift + F10`.
+4. Observe o resultado no console.
+
+Exemplo de execução:
+
+```text
+Input:           patrocinio
+Expected Output: aciinooprt
+Actual Output:   aciinooprt
+[PASSED]
+```
+
+Quando aparecer:
+
+```text
+[PASSED]
+```
+
+significa que o resultado produzido pelo algoritmo corresponde ao resultado esperado.
+
+Caso apareça:
+
+```text
+[FAILED]
+```
+
+significa que o resultado obtido foi diferente do valor esperado pelo teste.
+
+## Execução de todos os exercícios
+
+Os seguintes executáveis estão disponíveis no projeto:
+
+```text
+Exer01_BubbleSortString
+Exer02_SelectionSortDescending
+Exer03_SelectionSortKSwaps
+Exer04_InsertionSortShiftCount
+Exer05_InsertionSortDescendingTail
+```
+
+Cada um pode ser compilado e executado separadamente pelo CLion.
+
+## Organização da atividade
+
+Esta atividade prática é composta por duas etapas.
+
+A primeira etapa consiste na disponibilização do código-fonte completo e estruturado em um repositório no GitHub, incluindo este arquivo `README.md` com instruções para compilação, execução e testes.
+
+A segunda etapa consiste na gravação de um vídeo demonstrativo apresentando:
+
+* explicação do código-fonte;
+* funcionamento dos algoritmos;
+* execução dos exercícios;
+* breve explicação sobre o processo de desenvolvimento da solução.
+
+## Autor
+
+**Lucas Carvalho**
+
+Estudante de Análise e Desenvolvimento de Sistemas — IFTM
