@@ -1,13 +1,7 @@
-//
-// Created by Juninho Moreira on 18/08/26.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include <cmath>
-
-//#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -28,14 +22,12 @@ typedef vector< ii > vii;
 #define pb push_back
 #define mp make_pair
 #define pq priority_queue
-#define LSONE(s) ((s)&(-s)) //LASTBIT
+#define LSONE(s) ((s)&(-s))
 #define DEG_to_RAD(X)   (X * PI / 180)
 #define F first
 #define S second
 #define PI 2*acos(0)
 
-// 1. PURE LOGIC
-// TODO: Definir a funcao principal de solucao
 string bubbleSortString(string str) {
     int n = static_cast<int>(str.length());
 
@@ -49,21 +41,17 @@ string bubbleSortString(string str) {
                 swapped = true;
             }
         }
-        // Se não houve troca, o vetor já está ordenado!
         if (!swapped) break;
     }
     return str;
 }
 
-// 2. ONLINE JUDGE ADAPTER
 void onlineJudge() {
-    // TODO: Leitura de entradas e chamada da solucao para juiz online
     string s;
     if (!(cin >> s)) return;
     cout << bubbleSortString(s) << "\n";
 }
 
-// 3. LOCAL TESTS
 void runLocalTests() {
     cout << "=== Test Q1 (Character Sorting with Bubble Sort) ===\n\n";
 
@@ -90,8 +78,6 @@ void runLocalTests() {
 
 int main() {
     IOFAST();
-    runLocalTests();  // <- modo de testes locais
-    // onlineJudge(); // <- modo juiz online
-
+    runLocalTests();
     return 0;
 }
